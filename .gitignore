@@ -1,0 +1,10 @@
+.ideal/
+.vscode/
+node_modules/
+build/
+tmp/
+temp/*
+!tmp/.gitkeep
+
+.env
+ormconfig.json
