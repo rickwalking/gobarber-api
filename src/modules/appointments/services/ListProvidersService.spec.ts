@@ -2,19 +2,22 @@ import ListProvidersService from '@modules/appointments/services/ListProvidersSe
 import FakerHashProvider from '@modules/users/providers/HashProvider/fakes/FakeHashProvider';
 import FakeUserRepository from '@modules/users/repositories/fakes/FakeUsersRepository';
 
-import AppError from '@shared/errors/AppError';
+import FakeCacheProvider from '@shared/container/providers/CacheProvider/fakes/FakeCacheProvider';
 
 let fakeUserRepository: FakeUserRepository;
 let fakeHashProvider: FakerHashProvider;
 let listProviders: ListProvidersService;
+let fakeCacheProvider: FakeCacheProvider;
 
 describe('ListProvidersService' , () => {
     beforeEach(() => {
         fakeUserRepository = new FakeUserRepository();
         fakeHashProvider = new FakerHashProvider();
+        fakeCacheProvider = new FakeCacheProvider();
 
         listProviders = new ListProvidersService(
             fakeUserRepository,
+            fakeCacheProvider,
         );
     });
 

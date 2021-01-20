@@ -16,6 +16,8 @@ import routes from './routes';
 
 import AppError from '@shared/errors/AppError';
 
+import rateLimiter from '@shared/infra/http/middlewares/reateLimiter';
+
 import '@shared/infra/typeorm';
 import '@shared/container';
 
@@ -24,6 +26,7 @@ import { errors } from 'celebrate';
 
 const app = express();
 
+app.use(rateLimiter);
 app.use(cors());
 
 app.use(express.json());
