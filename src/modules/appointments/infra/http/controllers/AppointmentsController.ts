@@ -2,6 +2,8 @@ import { Request, Response } from 'express';
 
 import { container } from 'tsyringe';
 
+import { classToClass } from 'class-transformer';
+
 import CreateAppointmentService from '@modules/appointments/services/CreateAppointmentService';
 
 export default class AppointmentsController {
@@ -11,12 +13,12 @@ export default class AppointmentsController {
 
         const createAppointment = container.resolve(CreateAppointmentService);
 
-        const appointment = await createAppointment.execute({
+        const appointments = await createAppointment.execute({
             user_id,
             date,
             provider_id,
         });
 
-        return response.json(appointment);
+        return response.json(classToClass(appointments));
     }
 }

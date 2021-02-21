@@ -11,14 +11,14 @@ export default class ProviderDayAvailabilityController {
             day,
             month,
             year,
-        } = request.body;
+        } = request.query;
 
         const listPoviderDayAvailability = container.resolve(ListProviderDayAvailabilityService);
 
         const availiability = await listPoviderDayAvailability.execute({
-            day,
-            month,
-            year,
+            day: Number(day),
+            month: Number(month),
+            year: Number(year),
             provider_id,
         });
 
